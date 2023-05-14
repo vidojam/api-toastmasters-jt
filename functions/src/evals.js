@@ -9,6 +9,12 @@ export async function getAllEvals(req, res) {
   res.send(evals).status(200);
 }
 
+export async function getOneEval(req, res) {
+  const { firstNameValue } = req.params
+  const oneEval = await coll.find({"firstName": firstNameValue }).toArray()
+  res.status(200).send(oneEval)
+}
+
 // CRUD: POST
 export async function  addEval(req, res) {
   const newEval = req.body
